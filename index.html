@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>煙神楽 shisha cafe＆bar｜歌舞伎町のシーシャカフェ&バー</title>
+  <meta name="description" content="東京都新宿区歌舞伎町のシーシャカフェ&バー、煙神楽 shisha cafe＆bar。落ち着いた空間で、ゆっくりとシーシャを楽しめます。" />
+  <style>
+    :root {
+      --bg: #0b0b0d;
+      --bg-soft: #151519;
+      --card: #1c1c22;
+      --text-main: #f7f3eb;
+      --text-sub: #b9b2a7;
+      --accent: #9b2f2f;
+      --accent-light: #c84b4b;
+      --gold: #c7a45b;
+      --line: rgba(255,255,255,0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.8;
+      letter-spacing: 0.03em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(11, 11, 13, 0.86);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      font-size: 1.05rem;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      display: block;
+      font-size: 0.62rem;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-top: -2px;
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+      font-size: 0.86rem;
+      color: var(--text-sub);
+    }
+
+    nav a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-button {
+      padding: 8px 16px;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      border-radius: 999px;
+      font-size: 0.84rem;
+      white-space: nowrap;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding: 120px 22px 70px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(11,11,13,0.62), rgba(11,11,13,0.94)),
+        radial-gradient(circle at 78% 22%, rgba(155,47,47,0.45), transparent 34%),
+        radial-gradient(circle at 24% 80%, rgba(199,164,91,0.22), transparent 32%),
+        var(--bg);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gold);
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h1 {
+      font-size: clamp(2.55rem, 7vw, 5.8rem);
+      line-height: 1.05;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+
+    .hero-title-sub {
+      font-size: clamp(1rem, 2.5vw, 1.45rem);
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      margin-bottom: 28px;
+    }
+
+    .hero-copy {
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      color: var(--text-sub);
+      max-width: 640px;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      opacity: 0.92;
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: white;
+      box-shadow: 0 12px 34px rgba(155,47,47,0.32);
+    }
+
+    .button-secondary {
+      border: 1px solid var(--line);
+      color: var(--text-main);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .hero-card {
+      background: linear-gradient(160deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 26px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.34);
+    }
+
+    .photo-placeholder {
+      height: 420px;
+      border-radius: 22px;
+      background:
+        linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.54)),
+        radial-gradient(circle at center, rgba(199,164,91,0.32), transparent 34%),
+        linear-gradient(135deg, #2a1717, #111116 55%, #3a2412);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: end;
+      padding: 24px;
+      color: var(--text-sub);
+      font-size: 0.92rem;
+    }
+
+    section {
+      padding: 86px 22px;
+    }
+
+    .section-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      margin-bottom: 38px;
+    }
+
+    .section-title span {
+      display: block;
+      color: var(--gold);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.25;
+      letter-spacing: 0.06em;
+    }
+
+    .lead {
+      color: var(--text-sub);
+      max-width: 760px;
+      margin-top: 16px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: var(--text-main);
+    }
+
+    .card p {
+      color: var(--text-sub);
+      font-size: 0.94rem;
+    }
+
+    .menu-box {
+      background: linear-gradient(160deg, rgba(155,47,47,0.18), rgba(255,255,255,0.04));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      overflow: hidden;
+    }
+
+    .menu-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      padding: 22px 26px;
+      border-bottom: 1px solid var(--line);
+      align-items: center;
+    }
+
+    .menu-row:last-child {
+      border-bottom: none;
+    }
+
+    .menu-row strong {
+      font-size: 1.04rem;
+    }
+
+    .menu-row p {
+      color: var(--text-sub);
+      font-size: 0.9rem;
+      margin-top: 4px;
+    }
+
+    .price {
+      color: var(--gold);
+      font-size: 1.22rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .flavor-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .tag {
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text-sub);
+      background: rgba(255,255,255,0.04);
+      font-size: 0.92rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .info-list {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .info-item {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 18px;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .info-item:last-child {
+      border-bottom: none;
+    }
+
+    .info-label {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .map-placeholder {
+      min-height: 360px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.45)),
+        radial-gradient(circle at 60% 40%, rgba(199,164,91,0.25), transparent 34%),
+        #18181d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 28px;
+      color: var(--text-sub);
+    }
+
+    .notice {
+      background: rgba(199,164,91,0.09);
+      border: 1px solid rgba(199,164,91,0.28);
+      border-radius: 22px;
+      padding: 22px;
+      color: var(--text-sub);
+    }
+
+    .notice strong {
+      color: var(--text-main);
+    }
+
+    footer {
+      padding: 34px 22px;
+      border-top: 1px solid var(--line);
+      color: var(--text-sub);
+      font-size: 0.86rem;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 860px) {
+      nav {
+        display: none;
+      }
+
+      .hero-inner,
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 112px;
+      }
+
+      .photo-placeholder {
+        height: 300px;
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .info-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="#top" class="logo">
+        煙神楽
+        <span>shisha cafe＆bar</span>
+      </a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#flavor">Flavor</a>
+        <a href="#access">Access</a>
+      </nav>
+      <a href="#access" class="nav-button">Access</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Kabukicho Shisha Cafe & Bar</div>
+          <h1>煙神楽</h1>
+          <p class="hero-title-sub">shisha cafe＆bar</p>
+          <p class="hero-copy">
+            歌舞伎町の夜に、静かにほどける時間を。<br>
+            煙、香り、音、会話が重なる落ち着いた空間で、ゆっくりとシーシャをお楽しみください。
+          </p>
+          <div class="hero-actions">
+            <a href="#access" class="button button-primary">店舗情報を見る</a>
+            <a href="#menu" class="button button-secondary">料金を見る</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="photo-placeholder">
+            店内写真・シーシャ写真をここに入れると、HP全体の雰囲気が一気に出ます。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-inner">
+        <div class="section-title">
+          <span>About</span>
+          <h2>煙と香りに包まれる、<br>大人のためのくつろぎ空間。</h2>
+          <p class="lead">
+            煙神楽 shisha cafe＆barは、東京都新宿区歌舞伎町にあるシーシャカフェ&バーです。
+            おひとりでのご利用はもちろん、友人との会話やゆったり過ごす夜にもおすすめです。
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>ゆっくり過ごせる空間</h3>
+            <p>落ち着いた照明と音楽の中で、時間を忘れて過ごせる雰囲気を大切にしています。</p>
+          </div>
+          <div class="card">
+            <h3>初心者でも安心</h3>
+            <p>シーシャが初めての方にも、吸い方やフレーバー選びを丁寧にご案内します。</p>
+          </div>
+          <div class="card">
+            <h3>深夜まで営業</h3>
+            <p>営業時間は17:00〜28:00。仕事終わりや夜遅くのご利用にも対応しています。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="section-inner">
+        <div class="section-title">
+          <span>Menu</span>
+          <h2>料金</h2>
+          <p class="lead">
+            ご利用料金は下記をご確認ください。詳細なメニューやドリンク内容は、店舗にてご案内いたします。
+          </p>
+        </div>
+
+        <div class="menu-box">
+          <div class="menu-row">
+            <div>
+              <strong>シーシャ</strong>
+              <p>お好みのフレーバーや吸い心地に合わせてご提案します。</p>
+            </div>
+            <div class="price">20,000円〜</div>
+          </div>
+          <div class="menu-row">
+            <div>
+              <strong>ドリンク</strong>
+              <p>アルコール・ソフトドリンクなど、シーシャと一緒に楽しめるメニューをご用意しています。</p>
+            </div>
+            <div class="price">店舗にて</div>
+          </div>
+          <div class="menu-row">
+            <div>
+              <strong>チャージ・その他料金</strong>
+              <p>チャージや追加オプションがある場合は、ここに追記できます。</p>
+            </div>
+            <div class="price">店舗にて</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="flavor">
+      <div class="section-inner">
+        <div class="section-title">
+          <span>Flavor</span>
+          <h2>気分に合わせて選ぶフレーバー。</h2>
+          <p class="lead">
+            甘い香り、すっきりとしたミント、フルーツ系、重めのミックスなど、その日の気分に合わせてお楽しみいただけます。
+          </p>
+        </div>
+
+        <div class="flavor-list">
+          <span class="tag">フルーツ系</span>
+          <span class="tag">ミント系</span>
+          <span class="tag">スイーツ系</span>
+          <span class="tag">紅茶系</span>
+          <span class="tag">さっぱり系</span>
+          <span class="tag">重めミックス</span>
+          <span class="tag">おまかせミックス</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="access">
+      <div class="section-inner">
+        <div class="section-title">
+          <span>Access</span>
+          <h2>店舗情報</h2>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-list">
+            <div class="info-item">
+              <div class="info-label">店名</div>
+              <div>煙神楽 shisha cafe＆bar</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">住所</div>
+              <div>東京都新宿区歌舞伎町2-7-2 神楽ビル</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">営業時間</div>
+              <div>17:00〜28:00</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">定休日</div>
+              <div>水曜日</div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">料金</div>
+              <div>20,000円〜</div>
+            </div>
+          </div>
+
+          <div class="map-placeholder">
+            <div>
+              <strong>Google Mapをここに埋め込み</strong><br>
+              Googleマップの「共有」→「地図を埋め込む」からiframeコードを取得して差し替えできます。
+            </div>
+          </div>
+        </div>
+
+        <div style="height: 24px;"></div>
+
+        <div class="notice">
+          <strong>ご来店にあたって</strong><br>
+          当店は20歳未満の方のご入店をお断りしております。ご来店時に年齢確認をさせていただく場合がございます。
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© 2026 煙神楽 shisha cafe＆bar</div>
+      <div>Tokyo, Shinjuku, Kabukicho</div>
+    </div>
+  </footer>
+</body>
+</html>
