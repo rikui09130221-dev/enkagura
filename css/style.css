@@ -411,8 +411,8 @@ section[id] {
   place-items: center;
   isolation: isolate;
   background:
-    linear-gradient(90deg, rgba(12, 8, 6, 0.98) 0%, rgba(19, 13, 10, 0.9) 40%, rgba(25, 15, 12, 0.42) 72%, rgba(10, 7, 5, 0.65) 100%),
-    radial-gradient(circle at 82% 52%, #44231b 0, #20130f 27%, #0d0907 67%);
+    linear-gradient(90deg, rgba(12, 8, 6, 0.97) 0%, rgba(19, 13, 10, 0.88) 38%, rgba(25, 15, 12, 0.3) 72%, rgba(10, 7, 5, 0.52) 100%),
+    url("../images/top-01.png") center / cover no-repeat;
 }
 
 .hero::before {
@@ -842,6 +842,7 @@ section[id] {
 }
 
 .concept-visual::before {
+  z-index: 2;
   top: 3.5rem;
   right: 3.5rem;
   bottom: 3.5rem;
@@ -850,6 +851,7 @@ section[id] {
 }
 
 .concept-visual::after {
+  z-index: 2;
   right: -8rem;
   bottom: -9rem;
   width: 27rem;
@@ -857,6 +859,29 @@ section[id] {
   border: 1px solid rgba(200, 164, 93, 0.14);
   border-radius: 50%;
   box-shadow: inset 0 0 4rem rgba(120, 50, 28, 0.12);
+}
+
+.concept-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 58% center;
+  transition: transform 1.2s var(--ease-luxury);
+}
+
+.concept-visual:hover .concept-photo {
+  transform: scale(1.025);
+}
+
+.concept-visual-shade {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8, 6, 5, 0.18), rgba(8, 6, 5, 0.62)),
+    radial-gradient(circle at 50% 46%, transparent 8%, rgba(8, 6, 5, 0.44) 76%);
 }
 
 .concept-visual-glow {
@@ -916,7 +941,7 @@ section[id] {
 
 .concept-visual-copy {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   top: 50%;
   left: 50%;
   display: flex;
@@ -941,6 +966,7 @@ section[id] {
 
 .concept-frame-label {
   position: absolute;
+  z-index: 3;
   bottom: 1.1rem;
   left: 3.5rem;
   color: rgba(227, 201, 135, 0.48);
@@ -1551,76 +1577,47 @@ section[id] {
   min-height: clamp(25rem, 49vw, 38rem);
 }
 
-.gallery-placeholder {
+.gallery-image {
   position: absolute;
   inset: 0;
-  display: grid;
-  place-items: center;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition: transform 1s var(--ease-luxury);
 }
 
-.gallery-card:hover .gallery-placeholder {
-  transform: scale(1.025);
+.gallery-card:hover .gallery-image {
+  transform: scale(1.035);
 }
 
-.gallery-placeholder::before,
-.gallery-placeholder::after {
+.gallery-card::after {
   position: absolute;
-  border-radius: 50%;
-  content: "";
-}
-
-.gallery-placeholder::before {
-  width: min(42%, 18rem);
-  aspect-ratio: 1;
-  border: 1px solid rgba(200, 164, 93, 0.18);
-  box-shadow: inset 0 0 5rem rgba(126, 55, 31, 0.14);
-}
-
-.gallery-placeholder::after {
-  width: min(29%, 12rem);
-  aspect-ratio: 1;
-  border: 1px solid rgba(200, 164, 93, 0.1);
-}
-
-.gallery-placeholder span {
-  position: relative;
   z-index: 1;
-  font-family: var(--font-serif);
-  font-size: clamp(5rem, 10vw, 9rem);
-  line-height: 1;
-  opacity: 0.24;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 5, 4, 0.05) 46%, rgba(7, 5, 4, 0.58) 100%);
+  content: "";
+  pointer-events: none;
 }
 
-.gallery-ambience .gallery-placeholder {
-  background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0.55), transparent 55%),
-    radial-gradient(ellipse at 65% 40%, rgba(111, 47, 28, 0.38), transparent 34%),
-    linear-gradient(135deg, #21120d, #090706 75%);
+.gallery-ambience .gallery-image {
+  object-position: center;
 }
 
-.gallery-shisha .gallery-placeholder {
-  background:
-    radial-gradient(circle at 48% 55%, rgba(200, 164, 93, 0.14), transparent 11%),
-    radial-gradient(circle at 45% 30%, rgba(90, 87, 78, 0.24), transparent 27%),
-    linear-gradient(150deg, #151719, #0a0807 74%);
+.gallery-shisha .gallery-image {
+  object-position: 46% center;
 }
 
-.gallery-detail .gallery-placeholder {
-  background:
-    radial-gradient(circle at 65% 30%, rgba(145, 86, 41, 0.29), transparent 24%),
-    linear-gradient(145deg, #28190e, #0c0806 68%);
+.gallery-detail .gallery-image {
+  object-position: 63% center;
 }
 
-.gallery-vip .gallery-placeholder {
-  background:
-    linear-gradient(0deg, rgba(8, 5, 4, 0.48), transparent 50%),
-    radial-gradient(ellipse at 45% 72%, rgba(109, 13, 19, 0.5), transparent 36%),
-    linear-gradient(120deg, #300f12, #0b0807 70%);
+.gallery-vip .gallery-image {
+  object-position: center 54%;
 }
 
 .gallery-card figcaption {
   position: absolute;
+  z-index: 2;
   right: 0;
   bottom: 0;
   left: 0;
