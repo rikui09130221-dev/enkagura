@@ -1140,6 +1140,58 @@ section[id] {
   letter-spacing: 0.08em;
 }
 
+.system-rate-list {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(200, 164, 93, 0.15);
+  border-bottom: 1px solid rgba(200, 164, 93, 0.15);
+}
+
+.system-rate-list > div {
+  display: flex;
+  min-height: 4.2rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.75rem;
+}
+
+.system-rate-list > div + div {
+  border-top: 1px solid rgba(200, 164, 93, 0.12);
+}
+
+.system-rate-list span {
+  color: var(--color-text-soft);
+  font-family: var(--font-serif);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+}
+
+.system-rate-list span small {
+  margin-left: 0.5rem;
+  color: var(--color-muted);
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+}
+
+.system-rate-list strong {
+  flex: 0 0 auto;
+  color: var(--color-gold-light);
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 2.1vw, 1.7rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+
+.system-rate-list strong small {
+  margin-left: 0.2rem;
+  font-size: 0.65rem;
+}
+
+.system-rate-list-compact > div {
+  min-height: 3.35rem;
+}
+
 .system-card > p:last-child {
   margin-top: 1.5rem;
   color: var(--color-muted);
