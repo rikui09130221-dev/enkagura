@@ -1,651 +1,574 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>煙神楽 shisha cafe＆bar｜歌舞伎町のシーシャカフェ&バー</title>
-  <meta name="description" content="東京都新宿区歌舞伎町のシーシャカフェ&バー、煙神楽 shisha cafe＆bar。落ち着いた空間で、ゆっくりとシーシャを楽しめます。" />
-
-  <style>
-    :root {
-      --bg: #0b0b0d;
-      --bg-soft: #151519;
-      --card: #1c1c22;
-      --text-main: #f7f3eb;
-      --text-sub: #b9b2a7;
-      --accent: #9b2f2f;
-      --accent-light: #c84b4b;
-      --gold: #c7a45b;
-      --line: rgba(255,255,255,0.12);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text-main);
-      line-height: 1.8;
-      letter-spacing: 0.03em;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: rgba(11, 11, 13, 0.86);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .header-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 14px 22px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .logo {
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      font-size: 1.05rem;
-      white-space: nowrap;
-    }
-
-    .logo span {
-      display: block;
-      font-size: 0.62rem;
-      font-weight: 500;
-      color: var(--gold);
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      margin-top: -2px;
-    }
-
-    nav {
-      display: flex;
-      gap: 22px;
-      font-size: 0.86rem;
-      color: var(--text-sub);
-    }
-
-    nav a:hover {
-      color: var(--text-main);
-    }
-
-    .nav-button {
-      padding: 8px 16px;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      border-radius: 999px;
-      font-size: 0.84rem;
-      white-space: nowrap;
-    }
-
-    .hero {
-      min-height: 100vh;
-      padding: 120px 22px 70px;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      background:
-        linear-gradient(rgba(11,11,13,0.62), rgba(11,11,13,0.94)),
-        radial-gradient(circle at 78% 22%, rgba(155,47,47,0.45), transparent 34%),
-        radial-gradient(circle at 24% 80%, rgba(199,164,91,0.22), transparent 32%),
-        var(--bg);
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-      background-size: 54px 54px;
-      mask-image: linear-gradient(to bottom, black, transparent 85%);
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      width: 100%;
-      max-width: 1120px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 56px;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--gold);
-      font-size: 0.8rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 34px;
-      height: 1px;
-      background: var(--gold);
-    }
-
-    h1 {
-      font-size: clamp(2.55rem, 7vw, 5.8rem);
-      line-height: 1.05;
-      letter-spacing: 0.08em;
-      margin-bottom: 20px;
-    }
-
-    .hero-title-sub {
-      font-size: clamp(1rem, 2.5vw, 1.45rem);
-      color: var(--gold);
-      letter-spacing: 0.1em;
-      margin-bottom: 28px;
-    }
-
-    .hero-copy {
-      font-size: clamp(1rem, 2vw, 1.18rem);
-      color: var(--text-sub);
-      max-width: 640px;
-      margin-bottom: 34px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 13px 22px;
-      border-radius: 999px;
-      font-weight: 700;
-      transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      opacity: 0.92;
-    }
-
-    .button-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
-      color: white;
-      box-shadow: 0 12px 34px rgba(155,47,47,0.32);
-    }
-
-    .button-secondary {
-      border: 1px solid var(--line);
-      color: var(--text-main);
-      background: rgba(255,255,255,0.04);
-    }
-
-    .hero-card {
-      background: linear-gradient(160deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03));
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: 26px;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.34);
-    }
-
-    .photo-placeholder {
-      height: 420px;
-      border-radius: 22px;
-      background:
-        linear-gradient(rgba(0,0,0,0.12), rgba(0,0,0,0.28)),
-        url("shishahp1.jpeg") center/cover no-repeat;
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: inset 0 0 80px rgba(0,0,0,0.18);
-    }
-
-    section {
-      padding: 86px 22px;
-    }
-
-    .section-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-    }
-
-    .section-title {
-      margin-bottom: 38px;
-    }
-
-    .section-title span {
-      display: block;
-      color: var(--gold);
-      font-size: 0.78rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    h2 {
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      line-height: 1.25;
-      letter-spacing: 0.06em;
-    }
-
-    .lead {
-      color: var(--text-sub);
-      max-width: 760px;
-      margin-top: 16px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 24px;
-    }
-
-    .card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-      color: var(--text-main);
-    }
-
-    .card p {
-      color: var(--text-sub);
-      font-size: 0.94rem;
-    }
-
-    .menu-box {
-      background: linear-gradient(160deg, rgba(155,47,47,0.18), rgba(255,255,255,0.04));
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      overflow: hidden;
-    }
-
-    .menu-row {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 18px;
-      padding: 22px 26px;
-      border-bottom: 1px solid var(--line);
-      align-items: center;
-    }
-
-    .menu-row:last-child {
-      border-bottom: none;
-    }
-
-    .menu-row strong {
-      font-size: 1.04rem;
-    }
-
-    .menu-row p {
-      color: var(--text-sub);
-      font-size: 0.9rem;
-      margin-top: 4px;
-    }
-
-    .price {
-      color: var(--gold);
-      font-size: 1.22rem;
-      font-weight: 800;
-      white-space: nowrap;
-    }
-
-    .flavor-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .tag {
-      padding: 10px 16px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--text-sub);
-      background: rgba(255,255,255,0.04);
-      font-size: 0.92rem;
-    }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 24px;
-      align-items: stretch;
-    }
-
-    .info-list {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      overflow: hidden;
-    }
-
-    .info-item {
-      display: grid;
-      grid-template-columns: 110px 1fr;
-      gap: 18px;
-      padding: 20px 24px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .info-item:last-child {
-      border-bottom: none;
-    }
-
-    .info-label {
-      color: var(--gold);
-      font-weight: 700;
-      font-size: 0.92rem;
-    }
-
-    .map-placeholder {
-      min-height: 360px;
-      border-radius: 24px;
-      border: 1px solid var(--line);
-      background:
-        linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.45)),
-        radial-gradient(circle at 60% 40%, rgba(199,164,91,0.25), transparent 34%),
-        #18181d;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 28px;
-      color: var(--text-sub);
-    }
-
-    .notice {
-      background: rgba(199,164,91,0.09);
-      border: 1px solid rgba(199,164,91,0.28);
-      border-radius: 22px;
-      padding: 22px;
-      color: var(--text-sub);
-    }
-
-    .notice strong {
-      color: var(--text-main);
-    }
-
-    footer {
-      padding: 34px 22px;
-      border-top: 1px solid var(--line);
-      color: var(--text-sub);
-      font-size: 0.86rem;
-    }
-
-    .footer-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 860px) {
-      nav {
-        display: none;
-      }
-
-      .hero-inner,
-      .info-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: auto;
-        padding-top: 112px;
-      }
-
-      .photo-placeholder {
-        height: 300px;
-      }
-
-      .grid-3 {
-        grid-template-columns: 1fr;
-      }
-
-      .info-item {
-        grid-template-columns: 1fr;
-        gap: 4px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <div class="header-inner">
-      <a href="#top" class="logo">
-        煙神楽
-        <span>shisha cafe＆bar</span>
-      </a>
-
-      <nav>
-        <a href="#about">About</a>
-        <a href="#menu">Menu</a>
-        <a href="#flavor">Flavor</a>
-        <a href="#access">Access</a>
-      </nav>
-
-      <a href="#access" class="nav-button">Access</a>
-    </div>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="hero-inner">
-        <div>
-          <div class="eyebrow">Kabukicho Shisha Cafe & Bar</div>
-
-          <h1>煙神楽</h1>
-
-          <p class="hero-title-sub">shisha cafe＆bar</p>
-
-          <p class="hero-copy">
-            歌舞伎町の夜に、静かにほどける時間を。<br>
-            煙、香り、音、会話が重なる落ち着いた空間で、ゆっくりとシーシャをお楽しみください。
-          </p>
-
-          <div class="hero-actions">
-            <a href="#access" class="button button-primary">店舗情報を見る</a>
-            <a href="#menu" class="button button-secondary">料金を見る</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="歌舞伎町の夜に佇むシーシャバー、煙神楽（ENKAGURA）。煙、酒、接客、空間が重なる静かな夜の体験を。"
+    />
+    <meta name="theme-color" content="#15100d" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:site_name" content="煙神楽 | ENKAGURA" />
+    <meta property="og:title" content="煙神楽 | ENKAGURA" />
+    <meta
+      property="og:description"
+      content="煙と語らい、夜をほどく。歌舞伎町のシーシャバー、煙神楽。"
+    />
+    <title>煙神楽 | ENKAGURA</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/main.js" defer></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main-content">本文へ移動</a>
+
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="brand" href="#top" aria-label="煙神楽 トップへ">
+          <span class="brand-mark" aria-hidden="true">
+            <span>煙</span>
+          </span>
+          <span class="brand-name">
+            <span class="brand-name-ja">煙神楽</span>
+            <span class="brand-name-en">ENKAGURA</span>
+          </span>
+        </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-navigation"
+          aria-label="メニューを開く"
+          data-menu-toggle
+        >
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav
+          class="primary-navigation"
+          id="primary-navigation"
+          aria-label="メインナビゲーション"
+          data-navigation
+        >
+          <div class="nav-ornament" aria-hidden="true">ENKAGURA</div>
+          <ul class="nav-list">
+            <li><a href="#concept">CONCEPT</a></li>
+            <li><a href="#system">SYSTEM</a></li>
+            <li><a href="#menu">MENU</a></li>
+            <li><a href="#flavor">FLAVOR</a></li>
+            <li><a href="#space">SPACE</a></li>
+            <li><a href="#access">ACCESS</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+          <a class="button button-small button-gold nav-reserve" href="#reserve">
+            <span>RESERVE</span>
+          </a>
+          <p class="nav-mobile-note">KABUKICHO · TOKYO</p>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-atmosphere" aria-hidden="true">
+          <div class="hero-glow"></div>
+          <svg class="smoke smoke-one" viewBox="0 0 520 820" fill="none">
+            <path
+              d="M268 818C249 730 315 681 269 603C222 523 123 511 144 409C164 310 294 307 311 205C323 135 273 97 291 0"
+            />
+            <path
+              d="M359 818C405 710 328 642 368 559C410 472 483 418 434 323C397 251 309 229 339 132C353 87 383 50 378 0"
+            />
+            <path
+              d="M119 818C74 726 146 671 112 595C71 503 7 456 57 367C94 300 189 268 164 179C144 108 103 81 121 0"
+            />
+          </svg>
+          <svg class="smoke smoke-two" viewBox="0 0 520 820" fill="none">
+            <path
+              d="M207 818C169 742 210 680 179 614C137 526 46 506 78 397C105 305 235 305 241 203C246 128 195 81 222 0"
+            />
+            <path
+              d="M359 818C406 731 365 666 397 579C426 500 510 437 469 343C432 260 334 249 354 145C364 93 401 51 395 0"
+            />
+          </svg>
+          <div class="hero-ring hero-ring-outer"></div>
+          <div class="hero-ring hero-ring-inner"></div>
+          <div class="hero-seal">
+            <span class="hero-seal-kanji">煙</span>
+            <span class="hero-seal-en">ENKAGURA</span>
           </div>
         </div>
 
-        <div class="hero-card">
-          <div class="photo-placeholder" aria-label="煙神楽のシーシャ写真"></div>
+        <div class="hero-content container">
+          <div class="hero-copy" data-reveal>
+            <p class="eyebrow"><span>KABUKICHO</span><span>SHISHA BAR</span></p>
+            <h1 id="hero-title">
+              <span class="hero-title-ja">煙神楽</span>
+              <span class="hero-title-en">ENKAGURA</span>
+            </h1>
+            <p class="hero-tagline">煙と語らい、<br />夜をほどく。</p>
+            <p class="hero-description">
+              シーシャ、酒、そして人。<br />
+              歌舞伎町の喧騒を離れ、静かな余韻に身を委ねる夜へ。
+            </p>
+            <div class="hero-actions">
+              <a class="button button-gold" href="#reserve">
+                <span>予約について</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 12h13M13 6l6 6-6 6" />
+                </svg>
+              </a>
+              <a class="button button-outline" href="#system">
+                <span>料金・システム</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-side-note" aria-hidden="true">
+            <span>SHISHA</span>
+            <span class="hero-side-line"></span>
+            <span>SAKE</span>
+            <span class="hero-side-line"></span>
+            <span>HOSPITALITY</span>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <section id="about">
-      <div class="section-inner">
-        <div class="section-title">
-          <span>About</span>
-          <h2>煙と香りに包まれる、<br>大人のためのくつろぎ空間。</h2>
+        <a class="scroll-cue" href="#lead" aria-label="次のセクションへ">
+          <span>SCROLL</span>
+          <i aria-hidden="true"></i>
+        </a>
+      </section>
 
-          <p class="lead">
-            煙神楽 shisha cafe＆barは、東京都新宿区歌舞伎町にあるシーシャカフェ&バーです。
-            おひとりでのご利用はもちろん、友人との会話やゆったり過ごす夜にもおすすめです。
+      <section class="lead-section" id="lead" aria-label="主要なご案内">
+        <div class="lead-grid container">
+          <a class="lead-card" href="#concept" data-reveal>
+            <span class="lead-number">01</span>
+            <span class="lead-content">
+              <span class="lead-title">CONCEPT</span>
+              <span class="lead-description">煙神楽がつくる、夜の余白</span>
+            </span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
+          </a>
+          <a class="lead-card" href="#system" data-reveal>
+            <span class="lead-number">02</span>
+            <span class="lead-content">
+              <span class="lead-title">SYSTEM</span>
+              <span class="lead-description">ご来店前に知っておきたいこと</span>
+            </span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
+          </a>
+          <a class="lead-card" href="#menu" data-reveal>
+            <span class="lead-number">03</span>
+            <span class="lead-content">
+              <span class="lead-title">MENU</span>
+              <span class="lead-description">シーシャと酒を愉しむ</span>
+            </span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" /></svg>
+          </a>
+        </div>
+      </section>
+
+      <section class="section concept-section" id="concept" aria-labelledby="concept-title">
+        <div class="section-orbit orbit-left" aria-hidden="true"></div>
+        <div class="container">
+          <div class="section-heading" data-reveal>
+            <p class="section-kicker"><span>壱</span> CONCEPT</p>
+            <h2 id="concept-title">夜に、余白を。</h2>
+          </div>
+
+          <div class="concept-layout">
+            <div class="concept-visual" data-reveal>
+              <div class="concept-visual-glow"></div>
+              <div class="concept-moon"></div>
+              <div class="concept-smoke" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <p class="concept-visual-copy">
+                <span>THE ART OF</span>
+                <strong>余韻</strong>
+                <span>AFTERGLOW</span>
+              </p>
+              <div class="concept-frame-label">ENKAGURA · KABUKICHO</div>
+            </div>
+
+            <div class="concept-copy" data-reveal>
+              <p class="concept-lead">
+                煙神楽が届けたいのは、<br />
+                ただシーシャを吸うだけではない、<br />
+                夜そのものを味わう時間です。
+              </p>
+              <p>
+                ゆっくりと形を変える煙、グラスに落ちる光、心地よい距離の接客。
+                シーシャと酒、空間のすべてが重なり、日常から少し離れた静かな高揚をつくります。
+              </p>
+              <p>
+                誰かと語らう夜も、ひとりで余韻に浸る夜も。歌舞伎町の奥に佇む、大人のための居場所へ。
+              </p>
+              <div class="concept-signature" aria-hidden="true">
+                <span></span>
+                <em>ENKAGURA</em>
+              </div>
+            </div>
+          </div>
+
+          <div class="experience-grid">
+            <article class="experience-item" data-reveal>
+              <span class="experience-icon">煙</span>
+              <p class="experience-en">SHISHA</p>
+              <h3>香りを仕立てる</h3>
+              <p>気分や好みに耳を傾け、その夜にふさわしい一台をご提案します。</p>
+            </article>
+            <article class="experience-item" data-reveal>
+              <span class="experience-icon">酔</span>
+              <p class="experience-en">SAKE</p>
+              <h3>夜を深める</h3>
+              <p>煙の余韻に寄り添う一杯が、会話と時間をゆっくりとほどきます。</p>
+            </article>
+            <article class="experience-item" data-reveal>
+              <span class="experience-icon">間</span>
+              <p class="experience-en">HOSPITALITY</p>
+              <h3>心を満たす</h3>
+              <p>近すぎず遠すぎない接客で、思い思いに過ごせる夜を整えます。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section system-section" id="system" aria-labelledby="system-title">
+        <div class="container">
+          <div class="section-heading section-heading-row" data-reveal>
+            <div>
+              <p class="section-kicker"><span>弐</span> SYSTEM</p>
+              <h2 id="system-title">ご利用案内</h2>
+            </div>
+            <p class="section-intro">
+              初めての方にも、安心して夜を愉しんでいただけるように。
+              正式な料金とご利用条件は、現在最終確認中です。
+            </p>
+          </div>
+
+          <div class="notice" data-reveal role="note">
+            <span class="notice-mark" aria-hidden="true">i</span>
+            <p>
+              <strong>掲載準備中</strong>
+              以下はご案内項目のイメージです。料金・チャージ・利用時間などの確定情報は、公開前に反映します。
+            </p>
+          </div>
+
+          <div class="system-grid">
+            <article class="system-card" data-reveal>
+              <p class="system-card-en">ENTRANCE</p>
+              <h3>チャージ・ご入店</h3>
+              <p class="system-price">詳細確認中</p>
+              <p>チャージ、時間制、年齢確認などのご利用条件を、確定後に掲載します。</p>
+            </article>
+            <article class="system-card system-card-featured" data-reveal>
+              <span class="system-card-label">MAIN EXPERIENCE</span>
+              <p class="system-card-en">SHISHA</p>
+              <h3>シーシャ</h3>
+              <p class="system-price">メニュー準備中</p>
+              <p>ご希望を伺いながら、フレーバーやミックスをご提案します。</p>
+            </article>
+            <article class="system-card" data-reveal>
+              <p class="system-card-en">PRIVATE</p>
+              <h3>VIP・団体利用</h3>
+              <p class="system-price">お問い合わせ</p>
+              <p>個室や団体でのご利用条件は、予約窓口の確定後にご案内します。</p>
+            </article>
+          </div>
+
+          <ol class="visit-flow" aria-label="ご利用の流れ">
+            <li data-reveal>
+              <span>01</span>
+              <div><h3>ご来店</h3><p>ご予約方法と当日のご案内は、公開準備中です。</p></div>
+            </li>
+            <li data-reveal>
+              <span>02</span>
+              <div><h3>ヒアリング</h3><p>お好みや気分を伺い、過ごし方をご提案します。</p></div>
+            </li>
+            <li data-reveal>
+              <span>03</span>
+              <div><h3>夜を愉しむ</h3><p>煙と酒、会話が重なるひとときをお過ごしください。</p></div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section menu-section" id="menu" aria-labelledby="menu-title">
+        <div class="menu-backdrop" aria-hidden="true">
+          <span>MENU</span>
+        </div>
+        <div class="container">
+          <div class="section-heading section-heading-centered" data-reveal>
+            <p class="section-kicker"><span>参</span> MENU</p>
+            <h2 id="menu-title">煙と酒の嗜み</h2>
+            <p>正式なメニューと価格は現在準備中です。公開時に内容を差し替えます。</p>
+          </div>
+
+          <div class="menu-grid">
+            <article class="menu-card" data-reveal>
+              <div class="menu-card-top">
+                <span class="menu-symbol">煙</span>
+                <p>01</p>
+              </div>
+              <div>
+                <p class="menu-card-en">SHISHA</p>
+                <h3>シーシャ</h3>
+                <p>香り、強さ、余韻。お好みを伺いながら一台ずつ仕立てます。</p>
+              </div>
+              <span class="menu-status">DETAILS COMING SOON</span>
+            </article>
+            <article class="menu-card" data-reveal>
+              <div class="menu-card-top">
+                <span class="menu-symbol">杯</span>
+                <p>02</p>
+              </div>
+              <div>
+                <p class="menu-card-en">DRINK</p>
+                <h3>ドリンク</h3>
+                <p>煙の時間に寄り添う一杯を。ラインナップは順次公開します。</p>
+              </div>
+              <span class="menu-status">DETAILS COMING SOON</span>
+            </article>
+            <article class="menu-card" data-reveal>
+              <div class="menu-card-top">
+                <span class="menu-symbol">酒</span>
+                <p>03</p>
+              </div>
+              <div>
+                <p class="menu-card-en">BOTTLE</p>
+                <h3>ボトル</h3>
+                <p>特別な夜を華やかに彩るボトルメニューをご用意する予定です。</p>
+              </div>
+              <span class="menu-status">DETAILS COMING SOON</span>
+            </article>
+            <article class="menu-card" data-reveal>
+              <div class="menu-card-top">
+                <span class="menu-symbol">雅</span>
+                <p>04</p>
+              </div>
+              <div>
+                <p class="menu-card-en">VIP</p>
+                <h3>VIPメニュー</h3>
+                <p>個室での過ごし方に合わせたご案内を準備しています。</p>
+              </div>
+              <span class="menu-status">DETAILS COMING SOON</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section flavor-section" id="flavor" aria-labelledby="flavor-title">
+        <div class="container flavor-layout">
+          <div class="flavor-copy" data-reveal>
+            <p class="section-kicker"><span>肆</span> FLAVOR</p>
+            <h2 id="flavor-title">今夜の気分を、<br />香りに変える。</h2>
+            <p>
+              甘く濃密に、清々しく軽やかに、あるいは深くスパイシーに。
+              銘柄を選ぶ前に、まずは今夜の気分をお聞かせください。
+            </p>
+            <p class="flavor-note">※ 以下は味わいのご提案イメージです。正式なフレーバー一覧ではありません。</p>
+          </div>
+
+          <div class="flavor-compass" data-reveal>
+            <div class="compass-center">
+              <span>YOUR</span>
+              <strong>MOOD</strong>
+              <span>TONIGHT</span>
+            </div>
+            <div class="flavor-point flavor-rich">
+              <span>01</span>
+              <h3>RICH</h3>
+              <p>深く、重厚に</p>
+            </div>
+            <div class="flavor-point flavor-sweet">
+              <span>02</span>
+              <h3>SWEET</h3>
+              <p>甘く、華やかに</p>
+            </div>
+            <div class="flavor-point flavor-fresh">
+              <span>03</span>
+              <h3>FRESH</h3>
+              <p>軽く、爽やかに</p>
+            </div>
+            <div class="flavor-point flavor-spice">
+              <span>04</span>
+              <h3>SPICE</h3>
+              <p>香り高く、刺激的に</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section space-section" id="space" aria-labelledby="space-title">
+        <div class="container">
+          <div class="section-heading section-heading-row" data-reveal>
+            <div>
+              <p class="section-kicker"><span>伍</span> SPACE</p>
+              <h2 id="space-title">夜を包む空間</h2>
+            </div>
+            <p class="section-intro">
+              実店舗写真の準備後、通常席・シーシャ・酒・VIPルームの写真に差し替えます。
+            </p>
+          </div>
+
+          <div class="gallery-grid">
+            <figure class="gallery-card gallery-card-wide gallery-ambience" data-reveal>
+              <div class="gallery-placeholder" aria-hidden="true"><span>空</span></div>
+              <figcaption><span>01</span><div><strong>AMBIENCE</strong><small>店舗全体</small></div></figcaption>
+            </figure>
+            <figure class="gallery-card gallery-shisha" data-reveal>
+              <div class="gallery-placeholder" aria-hidden="true"><span>煙</span></div>
+              <figcaption><span>02</span><div><strong>SHISHA</strong><small>シーシャと酒</small></div></figcaption>
+            </figure>
+            <figure class="gallery-card gallery-detail" data-reveal>
+              <div class="gallery-placeholder" aria-hidden="true"><span>酔</span></div>
+              <figcaption><span>03</span><div><strong>DETAIL</strong><small>光と質感</small></div></figcaption>
+            </figure>
+            <figure class="gallery-card gallery-card-wide gallery-vip" data-reveal>
+              <div class="gallery-placeholder" aria-hidden="true"><span>雅</span></div>
+              <figcaption><span>04</span><div><strong>VIP ROOM</strong><small>特別な夜のために</small></div></figcaption>
+            </figure>
+          </div>
+          <p class="gallery-status" data-reveal>
+            <span></span> PHOTOGRAPHY / PREPARING
           </p>
         </div>
+      </section>
 
-        <div class="grid-3">
-          <div class="card">
-            <h3>ゆっくり過ごせる空間</h3>
-            <p>落ち着いた照明と音楽の中で、時間を忘れて過ごせる雰囲気を大切にしています。</p>
+      <section class="section access-section" id="access" aria-labelledby="access-title">
+        <div class="access-layout container">
+          <div class="access-content" data-reveal>
+            <p class="section-kicker"><span>陸</span> ACCESS</p>
+            <h2 id="access-title">喧騒の、その先へ。</h2>
+            <p class="access-lead">歌舞伎町の夜に佇む、煙神楽。<br />詳しい店舗情報は現在公開準備中です。</p>
+
+            <dl class="access-list">
+              <div>
+                <dt>ADDRESS</dt>
+                <dd>東京都新宿区歌舞伎町<br /><span>詳細住所は最終確認後に掲載</span></dd>
+              </div>
+              <div>
+                <dt>OPEN</dt>
+                <dd>営業時間・定休日<br /><span>最終確認後に掲載</span></dd>
+              </div>
+              <div>
+                <dt>ROUTE</dt>
+                <dd>最寄駅からのアクセス<br /><span>案内準備中</span></dd>
+              </div>
+            </dl>
           </div>
 
-          <div class="card">
-            <h3>初心者でも安心</h3>
-            <p>シーシャが初めての方にも、吸い方やフレーバー選びを丁寧にご案内します。</p>
+          <div class="map-placeholder" data-reveal role="img" aria-label="Googleマップ掲載予定エリア">
+            <div class="map-grid" aria-hidden="true"></div>
+            <div class="map-route map-route-one" aria-hidden="true"></div>
+            <div class="map-route map-route-two" aria-hidden="true"></div>
+            <div class="map-pin" aria-hidden="true"><span>煙</span></div>
+            <p><strong>ENKAGURA</strong><span>GOOGLE MAP / PREPARING</span></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section faq-section" id="faq" aria-labelledby="faq-title">
+        <div class="container faq-layout">
+          <div class="faq-heading" data-reveal>
+            <p class="section-kicker"><span>質</span> FAQ</p>
+            <h2 id="faq-title">よくあるご質問</h2>
+            <p>正式な運用確認後、回答内容を更新します。</p>
           </div>
 
-          <div class="card">
-            <h3>深夜まで営業</h3>
-            <p>営業時間は17:00〜28:00。仕事終わりや夜遅くのご利用にも対応しています。</p>
+          <div class="faq-list" data-reveal>
+            <details>
+              <summary><span>01</span><strong>予約は必要ですか？</strong><i aria-hidden="true"></i></summary>
+              <div class="faq-answer"><p>予約方法と当日利用の可否は現在確認中です。予約窓口の決定後、こちらでご案内します。</p></div>
+            </details>
+            <details>
+              <summary><span>02</span><strong>シーシャが初めてでも利用できますか？</strong><i aria-hidden="true"></i></summary>
+              <div class="faq-answer"><p>お好みや経験に合わせてご提案できるよう準備しています。初めての方も、気軽にスタッフへご相談ください。</p></div>
+            </details>
+            <details>
+              <summary><span>03</span><strong>年齢確認はありますか？</strong><i aria-hidden="true"></i></summary>
+              <div class="faq-answer"><p>ご入店時に年齢確認をお願いする場合があります。年齢制限を含む正式なご利用条件は、公開前に掲載します。</p></div>
+            </details>
+            <details>
+              <summary><span>04</span><strong>支払い方法を教えてください。</strong><i aria-hidden="true"></i></summary>
+              <div class="faq-answer"><p>ご利用いただける決済方法は現在確認中です。確定後、一覧で分かりやすくご案内します。</p></div>
+            </details>
+            <details>
+              <summary><span>05</span><strong>服装やドレスコードはありますか？</strong><i aria-hidden="true"></i></summary>
+              <div class="faq-answer"><p>ドレスコードを含むご来店時のお願いは、店舗運用の確認後に掲載します。</p></div>
+            </details>
+            <details>
+              <summary><span>06</span><strong>団体・VIPでの利用はできますか？</strong><i aria-hidden="true"></i></summary>
+              <div class="faq-answer"><p>ご利用条件や予約方法を準備中です。確定後、専用のご案内を掲載します。</p></div>
+            </details>
           </div>
+        </div>
+      </section>
+
+      <section class="reserve-section" id="reserve" aria-labelledby="reserve-title">
+        <div class="reserve-smoke" aria-hidden="true"></div>
+        <div class="container reserve-inner" data-reveal>
+          <p class="reserve-en">RESERVATION</p>
+          <h2 id="reserve-title">今夜を、煙神楽で。</h2>
+          <p>予約・お問い合わせ窓口は現在準備中です。<br />正式なリンク、電話番号、各種SNSは確定後に掲載します。</p>
+
+          <div class="contact-grid" aria-label="お問い合わせ方法（準備中）">
+            <div class="contact-card is-pending">
+              <span class="contact-type">INSTAGRAM</span>
+              <strong>Instagram</strong>
+              <small>アカウント連携準備中</small>
+            </div>
+            <div class="contact-card is-pending">
+              <span class="contact-type">LINE</span>
+              <strong>LINE</strong>
+              <small>予約窓口準備中</small>
+            </div>
+            <div class="contact-card is-pending">
+              <span class="contact-type">TELEPHONE</span>
+              <strong>お電話</strong>
+              <small>電話番号確認中</small>
+            </div>
+          </div>
+
+          <p class="reserve-note"><span aria-hidden="true">※</span> 予約受付開始まで、今しばらくお待ちください。</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-main">
+        <a class="footer-brand" href="#top" aria-label="煙神楽 トップへ">
+          <span class="footer-brand-ja">煙神楽</span>
+          <span class="footer-brand-en">ENKAGURA</span>
+        </a>
+
+        <nav class="footer-nav" aria-label="フッターナビゲーション">
+          <a href="#concept">CONCEPT</a>
+          <a href="#system">SYSTEM</a>
+          <a href="#menu">MENU</a>
+          <a href="#flavor">FLAVOR</a>
+          <a href="#space">SPACE</a>
+          <a href="#access">ACCESS</a>
+          <a href="#faq">FAQ</a>
+          <a href="#reserve">RESERVE</a>
+        </nav>
+
+        <div class="footer-info">
+          <p>SHISHA BAR / KABUKICHO, TOKYO</p>
+          <p>店舗詳細・営業時間：公開準備中</p>
         </div>
       </div>
-    </section>
 
-    <section id="menu">
-      <div class="section-inner">
-        <div class="section-title">
-          <span>Menu</span>
-          <h2>料金</h2>
-
-          <p class="lead">
-            ご利用料金は下記をご確認ください。詳細なメニューやドリンク内容は、店舗にてご案内いたします。
-          </p>
-        </div>
-
-        <div class="menu-box">
-          <div class="menu-row">
-            <div>
-              <strong>シーシャ</strong>
-              <p>お好みのフレーバーや吸い心地に合わせてご提案します。</p>
-            </div>
-            <div class="price">20,000円〜</div>
-          </div>
-
-          <div class="menu-row">
-            <div>
-              <strong>ドリンク</strong>
-              <p>アルコール・ソフトドリンクなど、シーシャと一緒に楽しめるメニューをご用意しています。</p>
-            </div>
-            <div class="price">店舗にて</div>
-          </div>
-
-          <div class="menu-row">
-            <div>
-              <strong>チャージ・その他料金</strong>
-              <p>チャージや追加オプションがある場合は、ここに追記できます。</p>
-            </div>
-            <div class="price">店舗にて</div>
-          </div>
-        </div>
+      <div class="container footer-bottom">
+        <p>ご利用条件・年齢制限は公開前に正式情報へ更新します。</p>
+        <p>&copy; <span data-current-year>2026</span> ENKAGURA. ALL RIGHTS RESERVED.</p>
       </div>
-    </section>
-
-    <section id="flavor">
-      <div class="section-inner">
-        <div class="section-title">
-          <span>Flavor</span>
-          <h2>気分に合わせて選ぶフレーバー。</h2>
-
-          <p class="lead">
-            甘い香り、すっきりとしたミント、フルーツ系、重めのミックスなど、
-            その日の気分に合わせてお楽しみいただけます。
-          </p>
-        </div>
-
-        <div class="flavor-list">
-          <span class="tag">フルーツ系</span>
-          <span class="tag">ミント系</span>
-          <span class="tag">スイーツ系</span>
-          <span class="tag">紅茶系</span>
-          <span class="tag">さっぱり系</span>
-          <span class="tag">重めミックス</span>
-          <span class="tag">おまかせミックス</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="access">
-      <div class="section-inner">
-        <div class="section-title">
-          <span>Access</span>
-          <h2>店舗情報</h2>
-        </div>
-
-        <div class="info-grid">
-          <div class="info-list">
-            <div class="info-item">
-              <div class="info-label">店名</div>
-              <div>煙神楽 shisha cafe＆bar</div>
-            </div>
-
-            <div class="info-item">
-              <div class="info-label">住所</div>
-              <div>東京都新宿区歌舞伎町2-7-2 神楽ビル</div>
-            </div>
-
-            <div class="info-item">
-              <div class="info-label">営業時間</div>
-              <div>17:00〜28:00</div>
-            </div>
-
-            <div class="info-item">
-              <div class="info-label">定休日</div>
-              <div>水曜日</div>
-            </div>
-
-            <div class="info-item">
-              <div class="info-label">料金</div>
-              <div>20,000円〜</div>
-            </div>
-          </div>
-
-          <div class="map-placeholder">
-            <div>
-              <strong>Google Mapをここに埋め込み</strong><br>
-              Googleマップの「共有」→「地図を埋め込む」からiframeコードを取得して差し替えできます。
-            </div>
-          </div>
-        </div>
-
-        <div style="height: 24px;"></div>
-
-        <div class="notice">
-          <strong>ご来店にあたって</strong><br>
-          当店は20歳未満の方のご入店をお断りしております。
-          ご来店時に年齢確認をさせていただく場合がございます。
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-      <div>© 2026 煙神楽 shisha cafe＆bar</div>
-      <div>Tokyo, Shinjuku, Kabukicho</div>
-    </div>
-  </footer>
-</body>
+    </footer>
+  </body>
 </html>
