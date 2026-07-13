@@ -304,29 +304,13 @@ section[id] {
   gap: 0.8rem;
 }
 
-.brand-mark {
-  position: relative;
-  display: grid;
-  width: 2.55rem;
-  height: 2.55rem;
-  place-items: center;
-  border: 1px solid var(--color-gold);
+.brand-logo {
+  display: block;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
-}
-
-.brand-mark::after {
-  position: absolute;
-  width: 1.65rem;
-  height: 1.65rem;
-  border: 1px solid rgba(200, 164, 93, 0.28);
-  border-radius: 50%;
-  content: "";
-}
-
-.brand-mark span {
-  font-family: var(--font-serif);
-  font-size: 1rem;
-  line-height: 1;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(200, 164, 93, 0.28), 0 0 1.5rem rgba(200, 164, 93, 0.08);
 }
 
 .brand-name {
@@ -509,57 +493,29 @@ section[id] {
   animation: smoke-drift-two 18s ease-in-out infinite alternate;
 }
 
-.hero-seal {
+.hero-logo {
   position: absolute;
   top: 50%;
   right: clamp(4rem, 15vw, 15rem);
-  display: grid;
   width: clamp(13rem, 21vw, 21rem);
   aspect-ratio: 1;
-  place-items: center;
   border: 1px solid rgba(227, 201, 135, 0.55);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(84, 38, 22, 0.24), rgba(20, 13, 10, 0.08) 62%);
+  overflow: hidden;
+  background: #0b0a09;
   box-shadow:
-    inset 0 0 0 1.4rem rgba(12, 8, 6, 0.12),
-    0 0 4rem rgba(120, 67, 35, 0.13);
+    0 0 0 1.1rem rgba(12, 8, 6, 0.12),
+    0 0 4rem rgba(120, 67, 35, 0.18);
   transform: translateY(-50%);
 }
 
-.hero-seal::before,
-.hero-seal::after {
-  position: absolute;
-  border: 1px solid rgba(200, 164, 93, 0.18);
+.hero-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
-  content: "";
-}
-
-.hero-seal::before {
-  inset: 1rem;
-}
-
-.hero-seal::after {
-  inset: 2.1rem;
-  border-style: dashed;
-}
-
-.hero-seal-kanji {
-  margin-left: 0.13em;
-  font-family: var(--font-serif);
-  font-size: clamp(5.8rem, 10vw, 10rem);
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: 0.03em;
-  opacity: 0.78;
-  text-shadow: 0 0 2.5rem rgba(245, 235, 221, 0.12);
-}
-
-.hero-seal-en {
-  position: absolute;
-  bottom: 19%;
-  color: var(--color-gold-light);
-  font-size: 0.52rem;
-  letter-spacing: 0.45em;
+  object-fit: cover;
+  opacity: 0.86;
 }
 
 .hero-content {
@@ -2078,21 +2034,14 @@ section[id] {
 .footer-brand {
   display: inline-flex;
   width: fit-content;
-  flex-direction: column;
 }
 
-.footer-brand-ja {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  line-height: 1.2;
-  letter-spacing: 0.2em;
-}
-
-.footer-brand-en {
-  margin-top: 0.6rem;
-  color: var(--color-gold);
-  font-size: 0.53rem;
-  letter-spacing: 0.38em;
+.footer-logo {
+  display: block;
+  width: clamp(8rem, 12vw, 11rem);
+  height: auto;
+  border: 1px solid rgba(200, 164, 93, 0.14);
+  box-shadow: 0 1.5rem 3.5rem rgba(0, 0, 0, 0.28);
 }
 
 .footer-nav {
@@ -2191,7 +2140,7 @@ section[id] {
   .primary-navigation { gap: 1.2rem; }
   .nav-list { gap: 1.05rem; }
   .nav-list a { font-size: 0.53rem; }
-  .hero-seal { right: 7vw; }
+  .hero-logo { right: 7vw; }
   .footer-main { grid-template-columns: 0.8fr 1.2fr 1fr; }
 }
 
@@ -2299,7 +2248,7 @@ section[id] {
   .hero { min-height: max(720px, 100svh); }
   .hero-content { grid-template-columns: 1fr; padding-bottom: 7rem; }
   .hero-copy { max-width: 38rem; }
-  .hero-seal { right: -5rem; opacity: 0.55; }
+  .hero-logo { right: -5rem; opacity: 0.55; }
   .hero-ring { right: -15rem; }
   .hero-side-note { display: none; }
 
@@ -2341,7 +2290,7 @@ section[id] {
   body { font-size: 15px; }
   .container { width: min(calc(100% - 2rem), var(--container)); }
   .header-inner { width: calc(100% - 1.5rem); }
-  .brand-mark { width: 2.35rem; height: 2.35rem; }
+  .brand-logo { width: 2.7rem; height: 2.7rem; }
   .brand-name-ja { font-size: 0.9rem; }
   .brand-name-en { font-size: 0.44rem; }
 
@@ -2353,7 +2302,7 @@ section[id] {
   .hero { min-height: max(690px, 100svh); }
   .hero::before { background-size: 25vw 25vw; }
   .hero-content { width: calc(100% - 2rem); padding-top: calc(var(--header-height) + 3rem); }
-  .hero-seal { top: 43%; right: -7.5rem; width: 18rem; }
+  .hero-logo { top: 43%; right: -7.5rem; width: 18rem; }
   .hero-ring-outer { width: 38rem; }
   .hero-ring-inner { width: 30rem; }
   .hero-glow { right: -10rem; width: 31rem; }

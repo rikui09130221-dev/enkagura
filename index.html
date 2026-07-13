@@ -16,8 +16,13 @@
       property="og:description"
       content="煙と語らい、夜をほどく。歌舞伎町のシーシャバー、煙神楽。"
     />
+    <meta property="og:image" content="https://enkagura.vercel.app/images/enkagura-logo.png" />
+    <meta property="og:image:width" content="1254" />
+    <meta property="og:image:height" content="1254" />
+    <meta property="og:image:alt" content="煙神楽 ENKAGURA SHISHA LOUNGE ロゴ" />
     <title>煙神楽 | ENKAGURA</title>
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="images/enkagura-logo.png" type="image/png" />
+    <link rel="apple-touch-icon" href="images/enkagura-logo.png" />
     <link rel="preload" as="image" href="images/top-01.png" type="image/png" />
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/main.js" defer></script>
@@ -29,9 +34,14 @@
     <header class="site-header" data-header>
       <div class="header-inner">
         <a class="brand" href="#top" aria-label="煙神楽 トップへ">
-          <span class="brand-mark" aria-hidden="true">
-            <span>煙</span>
-          </span>
+          <img
+            class="brand-logo"
+            src="images/enkagura-logo.png"
+            alt=""
+            width="1254"
+            height="1254"
+            decoding="async"
+          />
           <span class="brand-name">
             <span class="brand-name-ja">煙神楽</span>
             <span class="brand-name-en">ENKAGURA</span>
@@ -99,9 +109,8 @@
           </svg>
           <div class="hero-ring hero-ring-outer"></div>
           <div class="hero-ring hero-ring-inner"></div>
-          <div class="hero-seal">
-            <span class="hero-seal-kanji">煙</span>
-            <span class="hero-seal-en">ENKAGURA</span>
+          <div class="hero-logo" aria-hidden="true">
+            <img src="images/enkagura-logo.png" alt="" width="1254" height="1254" decoding="async" />
           </div>
         </div>
 
@@ -604,8 +613,15 @@
     <footer class="site-footer">
       <div class="container footer-main">
         <a class="footer-brand" href="#top" aria-label="煙神楽 トップへ">
-          <span class="footer-brand-ja">煙神楽</span>
-          <span class="footer-brand-en">ENKAGURA</span>
+          <img
+            class="footer-logo"
+            src="images/enkagura-logo.png"
+            alt=""
+            width="1254"
+            height="1254"
+            loading="lazy"
+            decoding="async"
+          />
         </a>
 
         <nav class="footer-nav" aria-label="フッターナビゲーション">
