@@ -308,6 +308,7 @@ section[id] {
   display: block;
   width: 3rem;
   height: 3rem;
+  border-radius: 50%;
   object-fit: contain;
   filter: drop-shadow(0 0 0.75rem rgba(200, 164, 93, 0.08));
 }
@@ -498,6 +499,10 @@ section[id] {
   right: clamp(4rem, 15vw, 15rem);
   width: clamp(13rem, 21vw, 21rem);
   aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid rgba(227, 201, 135, 0.55);
+  border-radius: 50%;
+  background: #0b0a09;
   filter: drop-shadow(0 0 2.5rem rgba(120, 67, 35, 0.18));
   transform: translateY(-50%);
 }
@@ -506,6 +511,7 @@ section[id] {
   display: block;
   width: 100%;
   height: 100%;
+  border-radius: 50%;
   object-fit: contain;
   opacity: 0.86;
 }
@@ -2033,6 +2039,8 @@ section[id] {
   width: clamp(8rem, 12vw, 11rem);
   height: auto;
   border: 1px solid rgba(200, 164, 93, 0.14);
+  border-radius: 50%;
+  object-fit: contain;
   box-shadow: 0 1.5rem 3.5rem rgba(0, 0, 0, 0.28);
 }
 
@@ -2294,7 +2302,7 @@ section[id] {
   .hero { min-height: max(690px, 100svh); }
   .hero::before { background-size: 25vw 25vw; }
   .hero-content { width: calc(100% - 2rem); padding-top: calc(var(--header-height) + 3rem); }
-  .hero-logo { display: none; }
+  .hero-logo { display: block; top: 17%; right: 1rem; width: 5.75rem; opacity: 0.82; }
   .hero-ring-outer { width: 38rem; }
   .hero-ring-inner { width: 30rem; }
   .hero-glow { right: -10rem; width: 31rem; }
